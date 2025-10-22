@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  />
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap"
+    rel="stylesheet"
+  />
+  <!-- FontAwesome para el ícono del carrito -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
+  <link rel="stylesheet" href="/css/style.css" />
+  <title>Artesanías Destacadas de Michoacán</title>
+</head>
+<body>
+  <!-- Encabezado principal de la página -->
+  <header class="header">
+    <nav class="navbar">
+      <a href="#"><img class="navbar__logo" src="img/logo.jpg" alt="Logotipo" /></a>
+      <p class="navbar__brand">Artesanías de Michoacán</p>
+
+      <ul class="navbar__list">
+        <li class="navbar__item">
+          <a href="about.html" class="navbar__link btn btn--default">About us</a>
+        </li>
+        <li class="navbar__item">
+          <a href="#" class="navbar__link btn btn--default">Register</a>
+        </li>
+        <li class="navbar__item">
+          <button id="cartButton" class="btn btn--default">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span id="cartCount" class="cart-count">0</span>
+          </button>
+       </ul>
+    </nav>
+  </header>
+
+  <!-- Contenido principal -->
+  <section class="container">
+    <div class="card">
+      <img class="card__image" src="img/Jarra.webp" alt="Artesanía 1" />
+      <p id="name">Jarra con Asa Redonda en Cobre</p>
+      <p id="price">$ 1,689 MXN</p>
+      <a href="#" class="card__link">Añadir a carrito</a>
+    </div>
+
+    <div class="card">
+      <img class="card__image" src="img/Tarja-de-Cocina.webp" alt="Artesanía 2" />
+      <p id="name">Tarja de cocina con diseño floral</p>
+      <p id="price">$7,299</p>
+      <a href="#" class="card__link">Añadir a carrito</a>
+    </div>
+
+    <div class="card">
+      <img class="card__image" src="img/lampara_1.webp" alt="Artesanía 3" />
+      <p id="name">Lámpara esférica diseño Dubai</p>
+      <p id="price">$3,189</p>
+      <a href="#" class="card__link">Añadir a carrito</a>
+    </div>
+
+    <div class="card">
+      <img class="card__image" src="img/Tetera.webp" alt="Artesanía 4" />
+      <p id="name">Tetéra esférica en cobre</p>
+      <p id="price">$1,859</p>
+      <a href="#" class="card__link">Añadir a carrito</a>
+    </div>
+  </section>
+
+  <!-- Carrito -->
+  <section class="cart" id="cart">
+    <div class="cart__header"> 
+      <h2>🛍️ Tu carrito</h2> 
+      <button id="closeCart" class="cart__close-btn">&times;</button> 
+    </div> 
+    <div class="cart__items">
+    </div>
+    <div class="cart__footer"> 
+      <button class="btn btn--default">Finalizar compra</button> 
+    </div>
+  </section>
+
+  <!-- Pie de página -->
+  <footer class="footer">
+    <p>&copy; 2025. Profesional: Desarrollador Full Stack con Python.</p>
+  </footer>
+
+  <!-- Script para mostrar/ocultar el carrito -->
+ <script src="js/cart.js"></script>
+ 
+</body>
+</html>

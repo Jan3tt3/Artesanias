@@ -1,0 +1,309 @@
+/* Refactorización en SCSS */
+
+/* Variables */
+$primary-color: #c47e35;
+$primary-hover: #c05621;
+$secondary-color: #dca15d;
+$background-light: #fbfcff;
+$background-white: #ffffff;
+$background-dark: #0f172a;
+$text-light: #e2e8f0;
+$text-muted: #94a3b8;
+$font-base: "Lexend", Arial, Helvetica, sans-serif;
+$shadow-light: 0px 3px 7px 1px rgba(0, 0, 0, 0.07);
+$shadow-heavy: 0px 4px 8px rgba(0, 0, 0, 0.2);
+
+/* Mixins */
+@mixin flex-center($direction: row, $justify: center, $align: center) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin btn-base {
+  border-radius: 3px;
+  display: inline-block;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 13px 40px;
+  border: 0;
+  transition: background-color 200ms, color 200ms;
+}
+
+@mixin card-style {
+  width: 250px;
+  padding: 15px 20px;
+  margin: 10px;
+  background: $background-white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: $shadow-heavy;
+  transition: transform 0.3s ease;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+
+/* Base */
+* {
+  box-sizing: border-box;
+  font-family: $font-base;
+}
+
+body {
+  background-color: $background-light;
+  margin: 0;
+  width: 100%;
+
+  @media (prefers-color-scheme: dark) {
+    background: $background-dark;
+    color: $text-light;
+  }
+}
+
+h1, h2 {
+  font-weight: 400;
+  color: inherit;
+}
+
+h1 {
+  margin: 50px 0 30px;
+}
+
+h2 {
+  margin: 30px 0 20px;
+}
+
+p {
+  line-height: 30px;
+  font-size: 18px;
+  color: inherit;
+
+  @media (prefers-color-scheme: dark) {
+    color: $text-muted;
+  }
+}
+
+/* Reusable Layouts */
+.header,
+.footer {
+  @include flex-center(space-around);
+  padding: 10px 10px;
+}
+
+.footer {
+  background-color: $background-white;
+  padding: 40px 20px;
+  margin-top: 50px;
+}
+
+/* Navbar */
+.navbar {
+  width: 100%;
+  padding: 10px 0;
+  box-shadow: $shadow-light, -3px -7px 1px rgba(0, 0, 0, 0.07);
+  @include flex-center(row, space-between);
+  background-color: $background-white;
+
+  &__logo {
+    width: 170px;
+    padding: 3px;
+  }
+
+  &__brand {
+    font-size: 40px;
+    text-decoration: none;
+    padding-left: 20px;
+    color: $primary-color;
+  }
+
+  &__list {
+    @include flex-center(space-around);
+    list-style-type: none;
+    overflow: hidden;
+    padding-right: 20px;
+  }
+
+  &__item {
+    display: inline-block;
+  }
+
+  &__link {
+    text-decoration: none;
+    font-weight: bold;
+    color: $primary-color;
+    text-align: center;
+    padding: 13px 20px;
+
+    &:hover {
+      color: $secondary-color;
+    }
+  }
+}
+
+/* Container */
+.container {
+  width: 90%;
+  margin: 0 auto;
+  @include flex-center(row, center);
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Card */
+.card {
+  @include card-style;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  &:active {
+    background-color: #e0d4b7;
+  }
+
+  &--first {
+    border: 3px solid $primary-hover;
+  }
+
+  &--last {
+    border: 3px solid #6b4226;
+  }
+
+  &--even {
+    background-color: #f4e1c1;
+  }
+
+  &__image {
+    width: 100px;
+    height: 80px;
+    padding: 6px;
+  }
+
+  &__link {
+    color: $secondary-color;
+    text-decoration: underline;
+    line-height: 1.4;
+    padding: 0.25em;
+
+    &:hover {
+      color: $primary-hover;
+    }
+  }
+}
+
+/* Carrito */
+.cart {
+  width: 300px;
+  background-color: $background-white;
+  padding: 20px;
+  height: 100%;
+  position: fixed;
+  right: -50px;
+  top: 150px;
+  box-shadow: -19px -1px 22px -15px rgba(0, 0, 0, 0.2);
+
+  &__item {
+    border-bottom: 1px solid #333;
+    @include flex-center(row, space-between);
+    padding: 15px;
+  }
+
+  &__item-name {
+    width: 100px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 600;
+    padding: 25px 0;
+  }
+
+  &__item-info {
+    font-weight: 500;
+  }
+
+  &__item-icon {
+    width: 25px;
+    cursor: pointer;
+  }
+
+  &__item-img {
+    width: 60px;
+  }
+
+  &__delete-icon {
+    width: 100%;
+  }
+}
+
+/* Botones */
+.btn {
+  @include btn-base;
+
+  &--default {
+    color: #fff;
+    background-color: $primary-color;
+  }
+
+  &--default:hover,
+  &--outline:hover {
+    color: #fff;
+    background-color: $primary-hover;
+    text-decoration: none;
+  }
+}
+
+/* Media Queries */
+@media (max-width: 802px) {
+  .header {
+    padding: 15px;
+  }
+
+  .card {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+
+  .card__image {
+    width: 80px;
+    height: 60px;
+  }
+
+  .cart {
+    top: 80px;
+  }
+}
+
+@media (max-width: 500px) {
+  .cart {
+    width: 200px;
+    box-shadow: none;
+    padding: 0;
+  }
+
+  .cart__item-name {
+    padding: 15px 0;
+  }
+
+  .cart__item {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 10px;
+  }
+
+  .cart p {
+    font-size: clamp(1.5rem, 5vw, 3rem);
+    line-height: 5px;
+  }
+
+  .cart__item-img {
+    width: 100px;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  a:hover {
+    color: #1e40af;
+    text-decoration: underline;
+  }
+}
